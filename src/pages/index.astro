@@ -1,18 +1,7 @@
 ---
-import '../styles/global.css';
-const pageTitle = "Home";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Home Page";
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{pageTitle}</title>
-</head>
-<body>
-		<a href="/">{pageTitle}</a>
-		<a href="/about/">About</a>
-		<a href="/blog/">私のAstro学習ブログ</a>
-		<h1>🌖 Hello, Astronaut!</h1>
-</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>私の素晴らしいブログのサブタイトル</h2>
+</BaseLayout>
