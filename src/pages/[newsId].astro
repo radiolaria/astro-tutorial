@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+
+// 詳細記事ページの全パスを取得
+export async function getStaticPaths() {
+  const newsEntryies = await getCollection("news");
+  return newsEntryies.map((entry) => ({
+    params: {
+       newsId: entry.id
+       },
+      props: {
+        entry,
+      },
+
+  }));
+}
+
+// 記事の詳細情報を取得
+const { entry } = Astro.props;
+---
+<BaseLayout pageTitle="News Detail">
+
+<main>
+  <h1 class="title">{entry.data.title}</h1>
+  <p class="publishedAt">公開日：{entry.data.publishedAt}</p>
+  <div class="post" set:html={entry.data.title}></div>
+</main>
+
+</BaseLayout>
